@@ -5,14 +5,16 @@ import cors from "cors";
 import compression from "compression";
 import mongoose from "mongoose";
 import router from "./router";
+import dotenv from "dotenv";
 
-const PORT = 8000;
 const app = express();
+dotenv.config();
 app.use(
   cors({
     credentials: true,
   })
 );
+
 app.use(compression());
 app.use(cookieParser());
 app.use(express.json());
@@ -27,4 +29,10 @@ const MONGO_URL =
 mongoose.Promise = Promise;
 mongoose.connect(MONGO_URL);
 
-server.listen(PORT, () => console.log("Server started on PORT " + PORT));
+if (process.env.PORT) {
+  server.listen(process.env.PORT, () =>
+    console.log("Server started on PORT " + process.env.PORT)
+  );
+}
+
+module.exports = app;

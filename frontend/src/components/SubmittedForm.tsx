@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setCurrentSection } from "../redux/activeSection";
 
 interface UserDetails {
   firstname: string;
@@ -34,6 +36,8 @@ function SubmittedForm() {
   const [formDataList, setFormDataList] = useState<FormData[]>([]);
   const [selectedData, setSelectedData] = useState<FormData | null>(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   // GET ALL FORMS
   const getAllFormofUser = async () => {
@@ -70,6 +74,11 @@ function SubmittedForm() {
     setSelectedData(null);
     setIsPopupOpen(false);
   };
+
+  const goBack = (event: React.FormEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    dispatch(setCurrentSection('UserChoices'))
+  }
 
   return (
     <div className="p-8">
@@ -137,7 +146,7 @@ function SubmittedForm() {
           {/* Add more rows as needed */}
         </tbody>
       </table>
-      <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+      <button onClick={goBack} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
         Back
       </button>
       {isPopupOpen && selectedData && (
