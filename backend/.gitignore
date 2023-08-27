@@ -1,3 +1,7 @@
 node_modules
 .env
 dist
+
+
+
+mongodb+srv://srivastavaaryanalc76:L2lxZIEj7Z16ppXV@cluster0.3gdjlph.mongodb.net/test?retryWrites=true&w=majority
