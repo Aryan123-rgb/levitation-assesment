@@ -184,7 +184,7 @@ function SubmittedForm() {
               {selectedData.userDetails.phoneNumber}{" "}
             </p>
             <div className="mt-4 flex gap-7 flex-wrap">
-              {selectedData.Files.map((file, index) => (
+              {selectedData.Files.map((file) => (
                 <a href={file} target="_blank" className="w-[200] h-[200]"><img src={file} width={200} height={200}  alt="" /></a>
               ))}
             </div>

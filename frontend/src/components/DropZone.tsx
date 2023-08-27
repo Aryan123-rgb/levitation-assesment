@@ -100,6 +100,8 @@ function DropZone() {
 
     try {
       const uploadResults = await Promise.all(uploadPromises);
+      console.log(uploadResults);
+      
       console.log(linkArray);
     } catch (error) {
       console.error("Error uploading files:", error);
